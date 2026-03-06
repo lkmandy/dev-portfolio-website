@@ -1,7 +1,7 @@
 ---
 import themeConfig from '@theme-config'
 import { Link, DarkMode } from 'accessible-astro-components'
-import { LauncherTrigger } from 'accessible-astro-launcher'
+// import { LauncherTrigger } from 'accessible-astro-launcher'
 import { Icon } from 'astro-icon/components'
 
 /**
@@ -48,9 +48,44 @@ import { Icon } from 'astro-icon/components'
       </li>
     ))
   }
+
+  <!-- Action cluster: Resume + Contact icon buttons -->
+  <li class="menu-item nav-actions">
+    <div class="action-cluster" role="group" aria-label="Primary actions">
+      <Link
+        href="/resume.pdf"
+        isExternal={false}
+        isButton
+        type="secondary"
+        variant="outlined"
+        class="icon-btn"
+        aria-label="Resume">
+        <Icon aria-hidden="true" name="lucide:download" size="18" />
+        Resume
+        <span class="sr-only">Resume</span>
+      </Link>
+
+      <span class="divider" aria-hidden="true"></span>
+
+      <Link
+        href="/contact"
+        isExternal={false}
+        isButton
+        type="secondary"
+        variant="outlined"
+        class="icon-btn"
+        aria-label="Contact"
+      >
+        <Icon aria-hidden="true" name="lucide:mail" size="18" />
+        Contact
+        <span class="sr-only">Contact</span>
+      </Link>
+    </div>
+  </li>
+
   {
     themeConfig.navigation.darkmode && (
-      <li class="menu-item type-icon animate-rotate">
+      <li class="menu-item type-icon animate-rotate theme-toggle">
         <DarkMode>
           <Icon aria-hidden="true" name="lucide:moon" slot="light" />
           <Icon aria-hidden="true" name="lucide:sun" slot="dark" />
@@ -58,7 +93,88 @@ import { Icon } from 'astro-icon/components'
       </li>
     )
   }
-  <li class="menu-item desktop-launcher">
+
+  <!-- <li class="menu-item desktop-launcher">
     <LauncherTrigger launcherId="site-launcher" compact={true} gradientBorder={true} />
-  </li>
+  </li> -->
 </ul>
+
+<style lang="scss">
+  /* Cluster */
+  .action-cluster {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-inline-start: var(--space-s);
+  }
+
+  /* Icon button sizing to match the screenshot */
+  .icon-btn {
+    padding: 0.55rem 0.85rem;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    line-height: 1;
+  }
+
+  /* Subtle divider that works in light + dark */
+  .divider {
+    width: 1.25px;
+    height: 1.5rem;
+    background: light-dark(rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.18));
+    margin-inline: 0.2rem;
+  }
+
+  /* Space between cluster and theme toggle */
+  .theme-toggle {
+    margin-inline-start: var(--space-s);
+  }
+
+.icon-btn {
+  color: light-dark(
+    rgba(0,0,0,0.45),
+    rgba(255,255,255,0.45)
+  );
+
+  border: 2px solid light-dark(
+    rgba(0,0,0,0.45),
+    rgba(255,255,255,255)
+  );
+
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+/* Hover state */
+.icon-btn:hover {
+  color: var(--color-primary-400);
+
+  border-color: var(--color-primary-400);
+
+  background: light-dark(
+    rgba(0,0,0,0.04),
+    rgba(255,255,255,0.06)
+  );
+}
+
+/* Active page */
+.icon-btn[aria-current="page"] {
+  color: var(--color-primary-500);
+
+  border-color: var(--color-primary-500);
+
+  background: light-dark(
+    rgba(0,0,0,0.03),
+    rgba(255,255,255,0.08)
+  );
+}
+
+/* Remove underline entirely */
+.icon-btn,
+.icon-btn:hover,
+.icon-btn:visited {
+  text-decoration: none;
+}
+</style>
