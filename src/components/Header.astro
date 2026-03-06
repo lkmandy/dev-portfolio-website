@@ -1,6 +1,6 @@
 ---
 import Navigation from '@components/Navigation.astro'
-import LauncherConfig from '@components/LauncherConfig.astro'
+// import LauncherConfig from '@components/LauncherConfig.astro'
 import { HighContrast, ReducedMotion, SkipLink } from 'accessible-astro-components'
 
 /**
@@ -10,7 +10,7 @@ import { HighContrast, ReducedMotion, SkipLink } from 'accessible-astro-componen
  */
 ---
 
-<header>
+<header class="site-header">
   <SkipLink />
   <!-- Initialize preference components -->
   <div hidden>
@@ -20,13 +20,22 @@ import { HighContrast, ReducedMotion, SkipLink } from 'accessible-astro-componen
 
   <Navigation />
   {/* To remove the launcher, delete this component and remove the LauncherTrigger from `Navigation.astro`. */}
-  <LauncherConfig />
+  <!-- <LauncherConfig /> -->
 </header>
 
 <style lang="scss" is:global>
   @use '@assets/scss/base/breakpoint' as *;
 
   header {
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.08));
+      background: light-dark(rgba(248, 248, 248, 0.9), rgba(10, 10, 10, 0.82));
+    }
     li.type-icon {
       display: block;
 
