@@ -3,69 +3,69 @@ import { Link } from 'accessible-astro-components'
 import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
 
-/**
- * Hero Component
- *
- * @description A component that displays a hero section with a title, description, and image
- */
-interface Props {
-  /**
-   * The source URL for the image
-   */
-  src?: string
-}
-
-const { src = '/astronaut-hero-img.webp' }: Props = Astro.props
+import profileImg from '@assets/images/profile/amanda-shafack.jpg'
 ---
 
 <section class="hero my-24">
   <div class="container">
-    <div class="grid grid-cols-1 items-center gap-24 lg:grid-cols-2">
-      <div class="flex flex-col items-center gap-8 md:items-start">
-        <h1 class="text-center text-6xl md:text-left lg:text-8xl">
-          <slot><span class="text-gradient">Accessible</span> Starter for Astro</slot>
+    <div class="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
+      <div class="flex flex-col items-center gap-6 md:items-start">
+        <h1 class="text-center text-4xl font-extrabold tracking-tight whitespace-nowrap md:text-5xl lg:text-6xl">
+          <span>Full-Stack Developer</span>
         </h1>
+
+        <p class="max-w-xl text-center text-xl opacity-90 md:text-left">
+           Hello World! I'm <span class="font-extrabold">Amanda Shafack</span> I build accessible web and mobile experiences with Flutter, React, Node.js, and MongoDB
+        </p>
+
         <div class="flex flex-col gap-3 min-[500px]:flex-row">
-          <Link
-            href="https://github.com/incluud/accessible-astro-starter"
-            isButton
-            type="primary"
-            animateOnHover
-            animationType="boop"
-          >
-            <Icon aria-hidden="true" name="lucide:star" size="1.5rem" />
-            Star on GitHub
+          <Link href="/portfolio" isButton type="primary" animateOnHover animationType="boop">
+            View projects
           </Link>
-          <Link
-            href="https://accessible-astro.incluud.dev/"
-            isButton
-            type="secondary"
-            animateOnHover
-            animationType="boop"
-          >
-            <Icon aria-hidden="true" name="lucide:bookmark" size="1.5rem" />
-            Read the docs
+
+          <Link href="/contact" isButton type="secondary" animateOnHover animationType="boop">
+            Contact me
           </Link>
         </div>
       </div>
-      <Image class="hidden lg:block" src={src} alt="" decoding="async" width={800} height={600} loading="eager" />
+
+      <div class="hidden justify-center lg:flex">
+        <div class="photo-frame" aria-hidden="true">
+          <Image
+            src={profileImg}
+            alt="Portrait of Amanda Shafack"
+            width={640}
+            height={640}
+            loading="eager"
+            decoding="async"
+            class="photo"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <style lang="scss">
-  h1 {
-    text-wrap: unset;
+  .photo-frame {
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+    border-radius: 999px;
+    background: linear-gradient(
+      135deg,
+      light-dark(var(--brand-white-300), var(--brand-white-200)),
+      light-dark(var(--brand-white-300), var(--brand-white-200))
+    );
+    padding: 10px;
+    aspect-ratio: 1 / 1;
+    width: min(420px, 100%);
   }
 
-  .text-gradient {
-    background: linear-gradient(
-      315deg,
-      light-dark(var(--color-primary-300), var(--color-secondary-100)) 25%,
-      light-dark(var(--color-secondary-300), var(--color-primary-200))
-    );
-    background-clip: border-box;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  .photo {
+    border-radius: 999px;
+    background: var(--background-color);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 </style>
