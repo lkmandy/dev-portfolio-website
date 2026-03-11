@@ -7,173 +7,190 @@ const currentYear = new Date().getFullYear()
 ---
 
 <footer class="site-footer">
-
-  <!-- CTA stays -->
   <CallToAction />
 
-  <section class="footer-main">
+  <section class="footer-content">
     <Heading level="h2" class="sr-only">Footer</Heading>
 
-    <div class="container footer-grid">
+    <div class="container footer-inner">
 
-      <div class="footer-brand">
-        <h3>Amanda Shafack</h3>
+      <div class="footer-top">
+
+        <div class="footer-brand">
+          <h5>
+            <strong>Amanda Shafack</strong>
+          </h5>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <ul>
+            <li><Link href="/">Home</Link></li>
+            <li><Link href="/about">About</Link></li>
+            <li><Link href="/portfolio">Projects</Link></li>
+            <li><Link href="/resume.pdf">Resume</Link></li>
+            <li><Link href="/contact">Contact</Link></li>
+          </ul>
+        </nav>
+
       </div>
 
-      <nav class="footer-nav" aria-label="Footer navigation">
-        <ul>
-          <li><Link href="/">Home</Link></li>
-          <li><Link href="/about">About</Link></li>
-          <li><Link href="/projects">Projects</Link></li>
-          <li><Link href="/contact">Contact</Link></li>
+      <div class="footer-bottom">
+
+        <p class="footer-copy">
+          © {currentYear} Amanda Shafack. All rights reserved.
+        </p>
+
+        <ul class="footer-socials">
+
+          <li>
+            <Link href="https://github.com/lkmandy" isExternal class="social-button" hideIcon={true}>
+              <Icon name="lucide:github" size="18" />
+            </Link>
+          </li>
+
+          <li>
+            <Link href="https://linkedin.com/in/lkmandy" isExternal class="social-button" hideIcon={true}>
+              <Icon name="lucide:linkedin" size="18" />
+            </Link>
+          </li>
+
+          <li>
+            <Link href="mailto:shafack.likhene@gmail.com" class="social-button" hideIcon={true}>
+              <Icon name="lucide:mail" size="18" />
+            </Link>
+          </li>
+
+          <li>
+            <Link href="/resume.pdf" class="social-button" hideIcon={true}>
+              <Icon name="lucide:download" size="18" />
+            </Link>
+          </li>
+
         </ul>
-      </nav>
+
+      </div>
 
     </div>
   </section>
-
-  <section class="footer-bottom">
-    <div class="container footer-bottom-grid">
-
-      <p class="footer-copy">
-        © {currentYear} Amanda Shafack. All Rights Reserved.
-      </p>
-
-      <ul class="footer-socials">
-
-        <li>
-          <Link href="https://github.com/lkmandy" isExternal class="social-button" hideIcon={true}>
-            <Icon name="lucide:github" size="20" />
-          </Link>
-        </li>
-
-        <li>
-          <Link href="https://linkedin.com/in/lkmandy" isExternal class="social-button" hideIcon={true}>
-            <Icon name="lucide:linkedin" size="20" />
-          </Link>
-        </li>
-
-        <li>
-          <Link href="https://twitter.com/lkmandy" isExternal class="social-button" hideIcon={true}>
-            <Icon name="lucide:twitter" size="20" />
-          </Link>
-        </li>
-
-        <li>
-          <Link href="mailto:shafack.likhene@gmail.com" class="social-button" hideIcon={true}>
-            <Icon name="lucide:mail" size="20" />
-          </Link>
-        </li>
-
-        <li>
-          <Link href="/resume.pdf" class="social-button" hideIcon={true}>
-            <Icon name="lucide:download" size="20" />
-          </Link>
-        </li>
-
-      </ul>
-
-    </div>
-  </section>
-
 </footer>
 
 <style lang="scss">
-
-.site-footer{
+.site-footer {
   margin-top: 6rem;
 }
 
-/* top row */
-
-.footer-main{
-  padding-block: 4rem 2rem;
-  border-top:1px solid var(--border-color-subtle);
+.footer-content {
+  border-top: 1px solid var(--border-color-subtle);
+  padding-block: 3.5rem 2rem;
 }
 
-.footer-grid{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:2rem;
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
 
-.footer-brand h3{
-  font-size:clamp(2rem,4vw,3rem);
-  font-weight:600;
-  margin:0;
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
-/* navigation */
-
-.footer-nav ul{
-  display:flex;
-  gap:2rem;
-  list-style:none;
-  margin:0;
-  padding:0;
+.footer-brand {
+  max-width: 34rem;
 }
 
-.footer-nav :global(a){
-  text-decoration:none;
-  font-size:1.1rem;
-  font-weight:500;
+.footer-brand p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  opacity: 0.82;
 }
 
-.footer-nav :global(a:hover){
-  color:var(--brand-secondary);
+.footer-brand strong {
+  font-weight: 600;
 }
 
-/* bottom row */
-
-.footer-bottom{
-  border-top:1px solid var(--border-color-subtle);
-  padding-block:2rem;
+.footer-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.footer-bottom-grid{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:1.5rem;
+.footer-nav :global(a) {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
-.footer-copy{
-  margin:0;
-  opacity:.8;
+.footer-nav :global(a:hover) {
+  color: var(--brand-secondary);
 }
 
-/* social icons */
-
-.footer-socials{
-  display:flex;
-  gap:1rem;
-  list-style:none;
-  margin:0;
-  padding:0;
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color-subtle);
 }
 
-.social-button{
-  width:3rem;
-  height:3rem;
-  border-radius:999px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-decoration:none !important;
-  border:1px solid var(--border-color-subtle);
-  background:light-dark(#ffffff,#1a1a1a);
-  color:light-dark(#111,#fff);
-  transition:all .2s ease;
+.footer-copy {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.75;
 }
 
-.social-button:hover{
-  transform:translateY(-2px);
-  background:var(--brand-secondary);
-  border-color:var(--brand-secondary);
-  color:white;
+.footer-socials {
+  display: flex;
+  gap: 0.875rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
+.social-button {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none !important;
+  border: 1px solid var(--border-color-subtle);
+  background: light-dark(#ffffff, #1a1a1a);
+  color: light-dark(#111, #fff);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.social-button:hover {
+  transform: translateY(-2px);
+  background: light-dark(#f8fafc, #222);
+  border-color: var(--brand-secondary);
+  color: var(--brand-secondary);
+}
+
+@media (max-width: 768px) {
+  .footer-top,
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-nav ul,
+  .footer-socials {
+    justify-content: flex-start;
+  }
+}
 </style>
